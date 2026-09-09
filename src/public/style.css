@@ -1,0 +1,92 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #eef2ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 18px;
+  background: radial-gradient(circle at top left, #dbeafe, transparent 40%), #f8fafc;
+}
+
+.container {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 34px;
+  background: rgba(255, 255, 255, .94);
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(30, 41, 59, .12);
+}
+
+header h1 { margin: 10px 0 4px; font-size: clamp(2rem, 6vw, 3rem); }
+header p { margin: 0; color: #64748b; }
+
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  color: #4338ca;
+  background: #eef2ff;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.nova-tarefa { display: flex; gap: 10px; margin: 28px 0; }
+.nova-tarefa input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font: inherit;
+}
+
+button { border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+.nova-tarefa button {
+  padding: 0 20px;
+  color: white;
+  background: #4f46e5;
+  border-radius: 12px;
+}
+
+.lista { display: grid; gap: 10px; }
+.tarefa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.check {
+  width: 28px;
+  height: 28px;
+  color: white;
+  background: white;
+  border: 2px solid #818cf8;
+  border-radius: 50%;
+}
+
+.concluida .check { background: #4f46e5; }
+.concluida strong { color: #94a3b8; text-decoration: line-through; }
+.conteudo { display: grid; flex: 1; gap: 3px; }
+.conteudo small { color: #94a3b8; }
+.excluir { padding: 8px; color: #dc2626; background: transparent; }
+.vazio { padding: 35px; color: #94a3b8; text-align: center; }
+.vazio span { font-size: 2rem; }
+footer { margin-top: 28px; color: #94a3b8; font-size: .8rem; text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+@media (max-width: 520px) {
+  .container { padding: 24px 18px; }
+  .nova-tarefa { flex-direction: column; }
+  .nova-tarefa button { padding: 13px; }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhas Tarefas</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <span class="badge">Aplicação na nuvem</span>
+      <h1>Minhas tarefas</h1>
+      <p>Organize suas atividades de forma simples.</p>
+    </header>
+
+    <form class="nova-tarefa" method="post" action="/tarefas">
+      <label for="titulo" class="sr-only">Nova tarefa</label>
+      <input id="titulo" name="titulo" maxlength="120" required
+             placeholder="Digite uma nova tarefa..." autocomplete="off">
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <section class="lista" aria-label="Lista de tarefas">
+      <% if (tarefas.length === 0) { %>
+        <div class="vazio">
+          <span>✓</span>
+          <p>Nenhuma tarefa cadastrada.</p>
+        </div>
+      <% } %>
+
+      <% tarefas.forEach((tarefa) => { %>
+        <article class="tarefa <%= tarefa.concluida ? 'concluida' : '' %>">
+          <form method="post" action="/tarefas/<%= tarefa.id %>/alternar">
+            <button class="check" type="submit" aria-label="Alterar situação">
+              <%= tarefa.concluida ? '✓' : '' %>
+            </button>
+          </form>
+          <div class="conteudo">
+            <strong><%= tarefa.titulo %></strong>
+            <small><%= new Date(tarefa.criada_em).toLocaleString('pt-BR') %></small>
+          </div>
+          <form method="post" action="/tarefas/<%= tarefa.id %>/excluir"
+                onsubmit="return confirm('Deseja excluir esta tarefa?')">
+            <button class="excluir" type="submit">Excluir</button>
+          </form>
+        </article>
+      <% }) %>
+    </section>
+
+    <footer>Back-end Node.js • Front-end EJS • Banco PostgreSQL</footer>
+  </main>
+</body>
+</html>
